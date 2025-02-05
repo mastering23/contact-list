@@ -1,15 +1,16 @@
-import ExampleComponent from "./Api-fetch.jsx"
-import GetData from "./Api-fetch.jsx"
+import React from 'react';
+import  ServiceComponent  from "./components/ServiceComponent";
 
 const App = () => { 
 
   return (
-    <>
-          <><h1>TESTING</h1></>
+    <>    <hr />
+          <><h1>CONTACT LIST</h1></>
+          <hr />
     
-        <ExampleComponent />
+        <ServiceComponent />
     </>
   )
 }
 
-export default App
+export default App;
