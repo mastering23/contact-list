@@ -1,21 +1,37 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ExampleComponent() {
+
+  const [data, setEngelData] = useState();
+
   useEffect(() => {
-    console.log('fetching Api...');
+    const GetData = async () => {
+      const getApiData = await fetch('https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users');
+      const usersData = await getApiData.json();
+      console.log(usersData);
+      setEngelData(usersData);
+      
+    }
     GetData();
 
   }, []);
 
-  return <div></div>;
+  
+  return (
+    <div>
+      {data ? (
+        data.map((user) => (
+          <div key={user.id}>
+            <h3>Name : {user.name}</h3>     
+          </div>
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
 
 }
 
-export const GetData = async () => {
-  console.log('fetching Api... inside GetData........');
-  const getApiData = await fetch('https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users');
-  const x = getApiData.json();
-  console.log(x);
-  console.log('ending fetching Api...');
-}
+
 
